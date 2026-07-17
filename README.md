@@ -24,6 +24,7 @@ grill-ml-project
   → plan-ml-experiments
   → explicit experiment-batch approval
   → run-ml-experiment
+  → run-colab-ml-experiments when Colab is the approved substrate
   → fit-one-batch and smoke gates
   → main run
   → evaluate-ml-experiment
@@ -52,6 +53,7 @@ acceptance criteria. GitHub issues mirror the visible execution queue.
 | `grill-ml-project` | Agree on the objective, data, metrics, compute, budget, and stopping conditions |
 | `plan-ml-experiments` | Turn an accepted direction into an approval-ready experiment batch |
 | `run-ml-experiment` | Implement, validate, run, monitor, checkpoint, and resume approved experiments |
+| `run-colab-ml-experiments` | Run approved Colab CLI attempts and mirror checkpoints locally without Drive mounting |
 | `evaluate-ml-experiment` | Validate results, compare baselines, preserve conclusions, and recommend next directions |
 
 The project-local ledger is authoritative for experiment history and resume
@@ -113,6 +115,7 @@ skills/
     ├── grill-ml-project/
     ├── plan-ml-experiments/
     ├── run-ml-experiment/
+    ├── run-colab-ml-experiments/
     ├── evaluate-ml-experiment/
     └── tests/
 ```

@@ -28,6 +28,7 @@ Use the sibling skills in this order, entering at the stage supported by durable
 2. Use `$plan-ml-experiments` when a baseline must be established or an accepted direction needs an approval-ready experiment batch.
 3. Wait for explicit batch approval and register the immutable contract locally.
 4. Use `$run-ml-experiment` for implementation, preflight, fit-one-batch, smoke, snapshot, main execution, monitoring, interruption recovery, and W&B mirroring.
+   When the approved execution substrate is the Colab CLI, additionally use `$run-colab-ml-experiments` for named-session lifecycle and verified local artifact mirroring. It does not replace `$run-ml-experiment` or change the approved contract.
 5. Use `$evaluate-ml-experiment` for result validity, baseline comparison, conclusions, and recommendations.
 6. Stop for human approval before executing a scientifically different direction. Continue without routine approval when the next action remains inside the accepted contract and budget.
 
