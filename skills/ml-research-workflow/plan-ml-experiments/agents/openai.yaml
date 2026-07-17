@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan ML Experiments"
+  short_description: "Turn ML directions into approved experiment batches"
+  default_prompt: "Use $plan-ml-experiments to create a bounded, approval-ready ML experiment batch."

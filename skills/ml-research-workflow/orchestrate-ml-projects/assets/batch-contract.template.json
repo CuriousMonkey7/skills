@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch-001",
+  "approval": {
+    "status": "approved",
+    "approved_at": "2026-01-01T00:00:00Z",
+    "approved_by": "user"
+  },
+  "baseline_id": "baseline-001",
+  "allow_concurrent_batches": false,
+  "evaluation_protocol": {
+    "primary_metric": "metric_name",
+    "direction": "maximize",
+    "split": "validation"
+  },
+  "budget": {
+    "max_runs": 3,
+    "max_cost": 10.0,
+    "max_wall_seconds": 3600
+  },
+  "stopping_conditions": [
+    "Stop when the approved budget is exhausted"
+  ],
+  "decision_mapping": {
+    "improves": "recommend promotion",
+    "does_not_improve": "retain baseline"
+  },
+  "experiments": [
+    {
+      "experiment_id": "exp-001",
+      "hypothesis": "Describe the expected causal improvement",
+      "kind": "trainable",
+      "parent_id": "baseline-001",
+      "config": {},
+      "depends_on": [],
+      "retry": {
+        "max_attempts": 1
+      }
+    }
+  ]
+}
