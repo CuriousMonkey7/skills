@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrate ML Projects"
+  short_description: "Run human-gated ML research workflows"
+  default_prompt: "Use $orchestrate-ml-projects to shape and run this ML project through approved experiment loops."

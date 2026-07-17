@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evaluate ML Experiment"
+  short_description: "Evaluate ML runs and recommend next directions"
+  default_prompt: "Use $evaluate-ml-experiment to compare this run with its baseline and recommend what to try next."

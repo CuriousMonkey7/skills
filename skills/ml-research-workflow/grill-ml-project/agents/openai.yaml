@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grill ML Project"
+  short_description: "Shape an ML project through focused discovery"
+  default_prompt: "Use $grill-ml-project to clarify this ML problem, constraints, baseline, compute, and success criteria."

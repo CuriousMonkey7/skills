@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "valid": true,
+  "metrics": {},
+  "cost": {
+    "cost": 0.0,
+    "wall_seconds": 0.0
+  },
+  "artifacts": [],
+  "wandb": {
+    "mode": "unavailable",
+    "run_id": null,
+    "url": null
+  },
+  "conclusion": "Summarize the evidence and outcome",
+  "remaining_risks": []
+}

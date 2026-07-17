@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run ML Experiment"
+  short_description: "Safely execute and resume approved ML experiments"
+  default_prompt: "Use $run-ml-experiment to implement, validate, run, monitor, and resume this approved experiment."
