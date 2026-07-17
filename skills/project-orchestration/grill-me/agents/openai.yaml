@@ -1,0 +1,6 @@
+interface:
+  display_name: "Grill Me"
+  short_description: "Build shared project understanding before planning"
+  default_prompt: "Use $grill-me to develop shared understanding of this project before planning."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project progress</title>
+  <style>
+    :root { color-scheme: light dark; --accent: #5b7cfa; --muted: #777; --panel: color-mix(in srgb, Canvas 94%, var(--accent)); --border: color-mix(in srgb, CanvasText 18%, transparent); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 15px/1.5 ui-sans-serif, system-ui, sans-serif; background: Canvas; color: CanvasText; }
+    main { width: min(1100px, calc(100% - 32px)); margin: 40px auto; }
+    header, .card { border: 1px solid var(--border); border-radius: 16px; background: var(--panel); }
+    header { padding: 28px; margin-bottom: 20px; }
+    h1, h2, p { margin-top: 0; }
+    h1 { margin-bottom: 8px; font-size: clamp(26px, 4vw, 42px); }
+    h2 { font-size: 17px; }
+    .muted { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .card { padding: 20px; }
+    .wide { grid-column: 1 / -1; }
+    .pill { display: inline-block; padding: 3px 9px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 18%, transparent); font-size: 12px; font-weight: 700; }
+    ul { margin: 0; padding-left: 20px; }
+    .bar { height: 9px; overflow: hidden; border-radius: 99px; background: color-mix(in srgb, CanvasText 12%, transparent); }
+    .bar > span { display: block; height: 100%; background: var(--accent); }
+    .milestone { border-left: 4px solid var(--border); }
+    .milestone.Active, .milestone.Accepted { border-left-color: var(--accent); }
+    .empty { color: var(--muted); font-style: italic; }
+  </style>
+</head>
+<body>
+  <main id="app"></main>
+  <script>
+    // Keep this data synchronized with GOALS.md. GOALS.md is authoritative.
+    const project = {
+      name: "Project name",
+      updated: "YYYY-MM-DD HH:MM timezone",
+      outcome: "Observable final outcome",
+      activeObjective: "Current milestone objective",
+      readyFrontier: ["M1-I01 — Issue ready to implement"],
+      blockers: [],
+      workers: [
+        { name: "Worker or thread", assignment: "Bounded assignment", status: "Planned" }
+      ],
+      milestones: [
+        { id: "M1", name: "Milestone name", status: "Active", evidence: "Missing", audit: "Not started" },
+        { id: "M2", name: "Milestone name", status: "Planned", evidence: "Missing", audit: "Not started" }
+      ],
+      issues: [
+        { id: "M1-I01", name: "Issue name", status: "Ready", blockedBy: "None", evidence: "Missing", audit: "Not started" }
+      ]
+    };
+
+    const accepted = project.milestones.filter(item => item.status === "Accepted").length;
+    const progress = project.milestones.length ? Math.round(accepted / project.milestones.length * 100) : 0;
+    const list = items => items.length ? `<ul>${items.map(item => `<li>${item}</li>`).join("")}</ul>` : '<p class="empty">None.</p>';
+    const escapeHtml = value => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
+
+    document.querySelector("#app").innerHTML = `
+      <header>
+        <span class="pill">${progress}% accepted</span>
+        <h1>${escapeHtml(project.name)}</h1>
+        <p>${escapeHtml(project.outcome)}</p>
+        <div class="bar" aria-label="${progress}% complete"><span style="width:${progress}%"></span></div>
+        <p class="muted" style="margin:10px 0 0">Updated ${escapeHtml(project.updated)}</p>
+      </header>
+      <section class="grid">
+        <article class="card wide"><h2>Active objective</h2><p>${escapeHtml(project.activeObjective)}</p></article>
+        <article class="card"><h2>Ready frontier</h2>${list(project.readyFrontier.map(escapeHtml))}</article>
+        <article class="card"><h2>Blockers</h2>${list(project.blockers.map(escapeHtml))}</article>
+        <article class="card"><h2>Workers</h2>${list(project.workers.map(worker => `${escapeHtml(worker.name)} — ${escapeHtml(worker.assignment)} (${escapeHtml(worker.status)})`))}</article>
+        ${project.milestones.map(item => `
+          <article class="card milestone ${escapeHtml(item.status)}">
+            <span class="pill">${escapeHtml(item.status)}</span>
+            <h2 style="margin-top:12px">${escapeHtml(item.id)} — ${escapeHtml(item.name)}</h2>
+            <p><strong>Evidence:</strong> ${escapeHtml(item.evidence)}</p>
+            <p style="margin-bottom:0"><strong>Audit:</strong> ${escapeHtml(item.audit)}</p>
+          </article>`).join("")}
+        <article class="card wide">
+          <h2>Issue graph</h2>
+          ${list(project.issues.map(item => `${escapeHtml(item.id)} — ${escapeHtml(item.name)} · ${escapeHtml(item.status)} · blocked by ${escapeHtml(item.blockedBy)} · evidence ${escapeHtml(item.evidence)} · audit ${escapeHtml(item.audit)}`))}
+        </article>
+      </section>`;
+  </script>
+</body>
+</html>

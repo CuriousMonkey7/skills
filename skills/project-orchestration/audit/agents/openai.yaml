@@ -1,0 +1,6 @@
+interface:
+  display_name: "Audit"
+  short_description: "Independently verify issue and milestone evidence"
+  default_prompt: "Use $audit to independently verify completed project work against its issue and GOALS.md."
+policy:
+  allow_implicit_invocation: true

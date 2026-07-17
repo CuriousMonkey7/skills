@@ -1,0 +1,6 @@
+interface:
+  display_name: "To Goals"
+  short_description: "Turn settled discovery into an approved GOALS.md"
+  default_prompt: "Use $to-goals to turn our settled project discussion into an approval-ready GOALS.md."
+policy:
+  allow_implicit_invocation: false

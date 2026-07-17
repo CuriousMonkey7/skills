@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrate Projects"
+  short_description: "Shape, schedule, implement, and audit full projects"
+  default_prompt: "Use $orchestrate-projects to shape this project with me, then deliver it autonomously after I approve the plan and issue graph."

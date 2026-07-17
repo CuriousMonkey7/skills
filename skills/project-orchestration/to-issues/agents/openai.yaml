@@ -1,0 +1,6 @@
+interface:
+  display_name: "To Issues"
+  short_description: "Create dependency-linked local and GitHub issues"
+  default_prompt: "Use $to-issues to decompose the approved GOALS.md into dependency-linked execution issues."
+policy:
+  allow_implicit_invocation: false
