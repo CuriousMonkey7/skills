@@ -1,0 +1,4 @@
+interface:
+  display_name: "Run Colab ML Experiments"
+  short_description: "Safely sync Colab ML checkpoints and artifacts"
+  default_prompt: "Use $run-colab-ml-experiments to run this approved ML attempt on Colab and preserve its checkpoints locally."

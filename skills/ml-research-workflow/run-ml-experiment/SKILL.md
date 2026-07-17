@@ -35,4 +35,6 @@ Run these stages in order and record each transition locally:
 
 Record the host, command, workdir, process/session/job ID, logs, checkpoint, consumed budget, metrics, and W&B run ID. Keep the local ledger authoritative; use W&B for live configs, metrics, artifacts, and monitoring. Continue locally if W&B is offline or unavailable.
 
+When the approved substrate is the Colab CLI, use the sibling `$run-colab-ml-experiments` skill to preserve bounded-job artifacts before shutdown or periodically mirror long-run checkpoints to the local attempt directory. Keep this skill responsible for scientific gates and attempt state.
+
 Stop and request approval if recovery changes the hypothesis, evaluation protocol, planned budget, or scientific direction. Otherwise continue autonomously through monitoring and routine recovery, then hand the terminal attempt to `$evaluate-ml-experiment`.
